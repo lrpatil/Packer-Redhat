@@ -1,0 +1,61 @@
+
+{
+   "variables": {
+     "aws_access_key": "AKIA6AZFL6E525CZ6RXG",
+     "aws_secret_key": "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",
+     "instance_size": "t2.micro",
+     "ami_name": "ami-[HDFC-RedHat]",
+     "base_ami": "ami-0a74bfeb190bd404f",
+     "ssh_username": "ec2-user",
+     "aws_vpc_id": "vpc-08c83cb91360c7490",
+     "aws_subnet_id": "subnet-0844ab456719c93bd",
+     "kms_key_id":"80ad0982-7461-4094-8c6c-17269a01d8b3"
+   },
+   "builders": [
+     {
+       "type": "amazon-ebs",
+       "access_key": "{{user `aws_access_key`}}",
+       "secret_key": "{{user `aws_secret_key`}}",
+       "region": "ap-south-1",
+       "communicator": "ssh",
+       "ssh_pty" : true,
+       "encrypt_boot": "true",
+       "force_deregister": "true",
+       "force_delete_snapshot": "true",
+       "kms_key_id": "{{user `kms_key_id`}}",
+       "source_ami": "{{user `base_ami`}}",
+       "instance_type": "{{user `instance_size`}}",
+       "ssh_username": "{{user `ssh_username`}}",
+       "ami_name": "{{user `ami_name`}}",
+       "ami_virtualization_type": "hvm",
+       "vpc_id": "{{user `aws_vpc_id`}}",
+       "subnet_id": "{{user `aws_subnet_id`}}",
+       "tags": {
+         "Name": "RHEL-GoldemAMI",
+         "BuiltBy": "Packer",
+         "PackagesIncluded" : "SSM|TrenMicro"
+       }
+     }
+   ],
+   "description": "AWS image",
+   "provisioners": [
+     {
+       "type": "shell",
+       "inline": [
+        "sudo yum update -y",
+        "sudo yum install wget -y",
+        "sudo yum install zip -y",
+        "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm",
+        "mkdir dsa",
+        "cd dsa/",
+        "wget https://files.trendmicro.com/products/deepsecurity/en/12.0/Agent-RedHat_EL8-12.0.0-364.x86_64.zip",
+        "unzip Agent-RedHat_EL8-12.0.0-364.x86_64.zip",
+        "sudo rpm -ivh Agent-Core-RedHat_EL8-12.0.0-364.x86_64.rpm",
+        "echo installing trend micro",
+        "cd /usr/lib/systemd/system",
+        "sudo systemctl start ds_agent.service"
+       ]
+     }
+   ]
+}
+
