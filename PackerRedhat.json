@@ -18,7 +18,9 @@
 			"ssh_username": "ec2-user",
 			"shutdown_behavior": "stop",
 			"communicator": "ssh",
-			"ssh_pty": true,
+			"ssh_pty": "true",
+			"force_deregister": "true",
+			"force_delete_snapshot": "true",
 			"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
 			"tags": {
 				"Name": "RHEL-Goldem-AMI",
