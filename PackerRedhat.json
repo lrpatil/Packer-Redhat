@@ -30,7 +30,7 @@
 			{
 				"type": "shell",
 				"inline": [
-					"yum update -y"
+					"sudo yum update -y"
 				]
 			},
 			{
