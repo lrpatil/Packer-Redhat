@@ -4,7 +4,6 @@
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
 			"ec2_instance_type": "t2.micro",
-			"aws_kms_key_id": "",
 			"output_ami_name": "Golden-EC2-AMI-"
 		},
 		"builders": [{
@@ -17,14 +16,7 @@
 			"subnet_id": "{{user `aws_subnet_id`}}",
 			"instance_type": "{{user `ec2_instance_type`}}",
 			"ssh_username": "ec2-user",
-			"kms_key_id": "{{user `aws_kms_key_id`}}",
 			"shutdown_behavior": "stop",
-			"communicator": "ssh",
-			"ssh_pty": true,
-			"encrypt_boot": "true",
-			"force_deregister": "false",
-			"force_delete_snapshot": "false",
-			"ssh_agent_auth": true,
 			"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
 			"tags": {
 				"Name": "RHEL-Goldem-AMI",
@@ -37,7 +29,7 @@
 			{
 				"type": "shell",
 				"inline": [
-					"yum update -y"
+					"sudo yum update -y"
 				]
 			},
 			{
