@@ -3,7 +3,6 @@
 			"aws_source_ami": "ami-0a74bfeb190bd404f",
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
-			"ec2_security_group_id": "sg-0a538e4d8558743ad",
 			"ec2_instance_type": "t2.micro",
 			"aws_kms_key_id": "",
 			"output_ami_name": "Golden-EC2-AMI-"
@@ -16,7 +15,6 @@
 			"iam_instance_profile": "ssm",
 			"vpc_id": "{{user `aws_vpc_id`}}",
 			"subnet_id": "{{user `aws_subnet_id`}}",
-			"security_group_id": "{{user `ec2_security_group_id`}}",
 			"instance_type": "{{user `ec2_instance_type`}}",
 			"ssh_username": "ec2-user",
 			"kms_key_id": "{{user `aws_kms_key_id`}}",
