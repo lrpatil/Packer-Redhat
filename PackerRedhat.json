@@ -1,7 +1,6 @@
 	{
 		"variables": {
 			"aws_source_ami": "ami-0a74bfeb190bd404f",
-			"aws_iam_instance_profile": "",
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
 			"ec2_security_group_id": "sg-0a538e4d8558743ad",
@@ -14,7 +13,7 @@
 			"source_ami": "{{user `aws_source_ami`}}",
 			"ami_virtualization_type": "hvm",
 			"region": "ap-south-1",
-			"iam_instance_profile": "{{user `aws_iam_instance_profile`}}",
+			"iam_instance_profile": "ssm",
 			"vpc_id": "{{user `aws_vpc_id`}}",
 			"subnet_id": "{{user `aws_subnet_id`}}",
 			"security_group_id": "{{user `ec2_security_group_id`}}",
