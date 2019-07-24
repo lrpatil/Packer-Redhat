@@ -5,8 +5,6 @@
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
 			"ec2_security_group_id": "sg-0a538e4d8558743ad",
-			"ec2_ssh_keypair_name": "inventory",
-			"ec2_ssh_private_key_file": "",
 			"ec2_instance_type": "t2.micro",
 			"aws_kms_key_id": "",
 			"output_ami_name": "Golden-EC2-AMI-"
@@ -20,8 +18,6 @@
 			"vpc_id": "{{user `aws_vpc_id`}}",
 			"subnet_id": "{{user `aws_subnet_id`}}",
 			"security_group_id": "{{user `ec2_security_group_id`}}",
-			"ssh_keypair_name": "{{user `ec2_ssh_keypair_name`}}",
-			"ssh_private_key_file": "{{user `ec2_ssh_private_key_file`}}",
 			"instance_type": "{{user `ec2_instance_type`}}",
 			"ssh_username": "ec2-user",
 			"kms_key_id": "{{user `aws_kms_key_id`}}",
