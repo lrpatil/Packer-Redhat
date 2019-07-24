@@ -17,6 +17,7 @@
 			"instance_type": "{{user `ec2_instance_type`}}",
 			"ssh_username": "ec2-user",
 			"shutdown_behavior": "stop",
+			"ssh_pty": true,
 			"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
 			"tags": {
 				"Name": "RHEL-Goldem-AMI",
@@ -29,7 +30,7 @@
 			{
 				"type": "shell",
 				"inline": [
-					"sudo yum update -y"
+					"yum update -y"
 				]
 			},
 			{
