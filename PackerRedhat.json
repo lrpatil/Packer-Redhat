@@ -1,6 +1,6 @@
 	{
 		"variables": {
-			"aws_source_ami": "ami-0a74bfeb190bd404f",
+			"aws_source_ami": "ami-0d2692b6acea72ee6",
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
 			"ec2_instance_type": "t2.micro",
