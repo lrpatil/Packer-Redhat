@@ -1,64 +1,65 @@
-{
-	"variables": {
-		"aws_source_ami": "null",
-		"aws_region": "null",
-		"aws_iam_instance_profile": "",
-		"aws_vpc_id": "",
-		"aws_subnet_id": "",
-		"ec2_security_group_id": "",
-		"ec2_ssh_keypair_name": "",
-		"ec2_ssh_private_key_file": "",
-		"ec2_instance_type": "null",
-		"aws_kms_key_id": "",
-		"output_ami_name": "Golden-EC2-AMI-"
-	},
-	"builders": [{
-		"type": "amazon-ebs",
-		"source_ami": "{{user `aws_source_ami`}}",
-		"ami_virtualization_type": "hvm",
-		"region": "{{user `aws_region`}}",
-		"iam_instance_profile": "{{user `aws_iam_instance_profile`}}",
-		"vpc_id": "{{user `aws_vpc_id`}}",
-		"subnet_id": "{{user `aws_subnet_id`}}",
-		"security_group_id": "{{user `ec2_security_group_id`}}",
-		"ssh_keypair_name": "{{user `ssh_keypair_name`}}",
-		"ssh_private_key_file": "{{user `ec2_ssh_private_key_file`}}",
-		"instance_type": "{{user `ec2_instance_type`}}",
-		"ssh_username": "ec2-user",
-		"kms_key_id": "{{user `aws_kms_key_id`}}",
-		"shutdown_behavior": "stop",
-		"communicator": "ssh",
-		"ssh_pty": true,
-		"encrypt_boot": "true",
-		"force_deregister": "true",
-		"force_delete_snapshot": "true",
-		"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
-		"tags": {
-			"Name": "RHEL-Goldem-AMI",
-			"BuiltBy": "Packer",
-			"PackagesIncluded": "SSM|Python"
-		}
-	}],
-	"description": "AWS image",
-	"provisioners": [{
-			"type": "shell",
-			"inline": [
-				"yum update -y"
-			]
+	{
+		"variables": {
+			"aws_source_ami": "null",
+			"aws_region": "null",
+			"aws_iam_instance_profile": "",
+			"aws_vpc_id": "",
+			"aws_subnet_id": "",
+			"ec2_security_group_id": "",
+			"ec2_ssh_keypair_name": "",
+			"ec2_ssh_private_key_file": "",
+			"ec2_instance_type": "null",
+			"aws_kms_key_id": "",
+			"output_ami_name": "Golden-EC2-AMI-"
 		},
-		{
-			"type": "shell",
-			"execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
-			"scripts": [
-				"../scripts/InstallPython.sh"
-			]
-		},
-		{
-			"type": "shell",
-			"execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
-			"scripts": [
-				"../scripts/InstallSSMAgent.sh"
-			]
-		}
-	]
-}
+		"builders": [{
+			"type": "amazon-ebs",
+			"source_ami": "{{user `aws_source_ami`}}",
+			"ami_virtualization_type": "hvm",
+			"region": "{{user `aws_region`}}",
+			"iam_instance_profile": "{{user `aws_iam_instance_profile`}}",
+			"vpc_id": "{{user `aws_vpc_id`}}",
+			"subnet_id": "{{user `aws_subnet_id`}}",
+			"security_group_id": "{{user `ec2_security_group_id`}}",
+			"ssh_keypair_name": "{{user `ssh_keypair_name`}}",
+			"ssh_private_key_file": "{{user `ec2_ssh_private_key_file`}}",
+			"instance_type": "{{user `ec2_instance_type`}}",
+			"ssh_username": "ec2-user",
+			"kms_key_id": "{{user `aws_kms_key_id`}}",
+			"shutdown_behavior": "stop",
+			"communicator": "ssh",
+			"ssh_pty": true,
+			"encrypt_boot": "true",
+			"force_deregister": "true",
+			"force_delete_snapshot": "true",
+			"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
+			"tags": {
+				"Name": "RHEL-Goldem-AMI",
+				"BuiltBy": "Packer",
+				"PackagesIncluded": "SSM|Python"
+			}
+		}],
+		"description": "AWS image",
+		"provisioners": [
+			{
+				"type": "shell",
+				"inline": [
+					"yum update -y"
+				]
+			},
+			{
+				"type": "shell",
+				"execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
+				"scripts": [
+					"scripts/InstallPython.sh"
+				]
+			},
+			{
+				"type": "shell",
+				"execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
+				"scripts": [
+					"scripts/InstallSSMAgent.sh"
+				]
+			}
+		]
+	}
