@@ -17,6 +17,7 @@
 			"instance_type": "{{user `ec2_instance_type`}}",
 			"ssh_username": "ec2-user",
 			"shutdown_behavior": "stop",
+			"communicator": "ssh",
 			"ssh_pty": true,
 			"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
 			"tags": {
