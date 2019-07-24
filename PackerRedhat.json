@@ -20,7 +20,7 @@
 			"vpc_id": "{{user `aws_vpc_id`}}",
 			"subnet_id": "{{user `aws_subnet_id`}}",
 			"security_group_id": "{{user `ec2_security_group_id`}}",
-			"ssh_keypair_name": "{{user `ssh_keypair_name`}}",
+			"ssh_keypair_name": "{{user `ec2_ssh_keypair_name`}}",
 			"ssh_private_key_file": "{{user `ec2_ssh_private_key_file`}}",
 			"instance_type": "{{user `ec2_instance_type`}}",
 			"ssh_username": "ec2-user",
