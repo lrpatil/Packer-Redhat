@@ -50,14 +50,14 @@
 			"type": "shell",
 			"execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
 			"scripts": [
-				"../Scripts/InstallPython.sh"
+				"../scripts/InstallPython.sh"
 			]
 		},
 		{
 			"type": "shell",
 			"execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
 			"scripts": [
-				"../Scripts/InstallSSMAgent.sh"
+				"../scripts/InstallSSMAgent.sh"
 			]
 		}
 	]
