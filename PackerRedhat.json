@@ -4,7 +4,7 @@
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
 			"ec2_instance_type": "t2.micro",
-			"output_ami_name": "Golden-EC2-AMI-"
+			"output_ami_name": "Golden-EC2-AMI"
 		},
 		"builders": [{
 			"type": "amazon-ebs",
@@ -21,7 +21,7 @@
 			"ssh_pty": true,
 			"force_deregister": true,
 			"force_delete_snapshot": true,
-			"ami_name": "{{user `output_ami_name`}}-{{timestamp}}",
+			"ami_name": "{{user `output_ami_name`}}",
 			"tags": {
 				"Name": "RHEL-Goldem-AMI",
 				"BuiltBy": "Packer",
