@@ -11,7 +11,6 @@
 		"ec2_ssh_keypair_name": "",
 		"ec2_ssh_private_key_file": "",
 		"ec2_instance_type": "null",
-		"ec2_ssh_username": "",
 		"aws_kms_key_id": "",
 		"output_ami_name": "Golden-EC2-AMI-"
 	},
@@ -29,7 +28,7 @@
 		"ssh_keypair_name": "{{user `ssh_keypair_name`}}",
 		"ssh_private_key_file": "{{user `ec2_ssh_private_key_file`}}",
 		"instance_type": "{{user `ec2_instance_type`}}",
-		"ssh_username": "{{user `ec2_ssh_username`}}",
+		"ssh_username": "ec2-user",
 		"kms_key_id": "{{user `aws_kms_key_id`}}",
 		"shutdown_behavior": "stop",
 		"communicator": "ssh",
