@@ -1,9 +1,9 @@
 	{
 		"variables": {
 			"aws_source_ami": "ami-0d2692b6acea72ee6",
-			"aws_vpc_id": "vpc-08c83cb91360c7490",
-			"aws_subnet_id": "subnet-0844ab456719c93bd",
-			"aws_kms_key_id":"2cd29851-a961-4649-9bb0-b68e250e92b9",
+			"aws_vpc_id": "",
+			"aws_subnet_id": "",
+			"aws_kms_key_id":"",
 			"ec2_instance_type": "t2.micro",
 			"output_ami_name": "Golden-EC2-AMI"
 		},
