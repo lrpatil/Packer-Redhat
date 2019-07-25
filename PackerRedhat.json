@@ -21,6 +21,7 @@
 			"ssh_pty": true,
 			"force_deregister": true,
 			"force_delete_snapshot": true,
+			"encrypt_boot": true,
 			"ami_name": "{{user `output_ami_name`}}",
 			"tags": {
 				"Name": "RHEL-Goldem-AMI",
