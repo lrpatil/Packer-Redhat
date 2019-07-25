@@ -3,6 +3,7 @@
 			"aws_source_ami": "ami-0d2692b6acea72ee6",
 			"aws_vpc_id": "vpc-08c83cb91360c7490",
 			"aws_subnet_id": "subnet-0844ab456719c93bd",
+			"aws_kms_key_id":"80ad0982-7461-4094-8c6c-17269a01d8b3"
 			"ec2_instance_type": "t2.micro",
 			"output_ami_name": "Golden-EC2-AMI"
 		},
@@ -22,6 +23,7 @@
 			"force_deregister": true,
 			"force_delete_snapshot": true,
 			"encrypt_boot": true,
+			"kms_key_id": "{{user `aws_kms_key_id`}}",
 			"ami_name": "{{user `output_ami_name`}}",
 			"tags": {
 				"Name": "RHEL-Goldem-AMI",
