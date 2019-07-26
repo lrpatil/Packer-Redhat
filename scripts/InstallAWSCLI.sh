@@ -9,5 +9,3 @@ sudo yum install python3-pip
 pip3 --version
 #Install awscli using pip3 
 sudo pip3 install awscli
-#Check AWS CLI version
-aws --version
